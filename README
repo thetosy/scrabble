@@ -1,0 +1,91 @@
+Name: Praise Olukilede
+USC NetID: olukiled
+CS 455 PA4
+Fall 2022
+
+----------------------------------------------
+CERTIFY IT'S YOUR WORK
+
+"I certify that the work submitted for this assignment does not
+violate USC's student conduct code.  In particular, the work is my
+own, not a collaboration, and does not involve code created by other
+people, except for the the resources explicitly mentioned in the CS 455
+Course Syllabus.  And I did not share my solution or parts of it with
+other students in the course."
+
+Initial below to "sign" the above statement:
+
+PO
+----------------------------------------------
+ACKNOWLEDGE ANY OUTSIDE SOURCES
+
+List here any code you submitted for this assignment that was written
+with significant help of a course staff member, or code used from the
+textbook.  Be specific about what methods or algorithms are involved,
+and what sections of the textbook are involved (if applicable): [you do
+not need to list any of the code that we wrote for the assignment,
+i.e., the contents of the starter files for the assignment]
+
+
+
+----------------------------------------------
+KNOWN BUGS or LIMITATIONS:
+
+
+
+----------------------------------------------
+DESCRIPTION OF YOUR CLASS DESIGN AND ALGORITHMS AND DATA STRUCTURES USED:
+
+Classes used: ScoreTable, Rack, AnagramDictionary, WordFinder
+
+ScoreTable:
+The class contains two static methods, a public "getWordValue" and a private "point". The class also
+uses an array data structure (this contains the point value associated with each letter)
+The array is private static and final. Private as the data structure is only
+accessed through the "point" function and final since point value does not change.
+getWordValue loops through each character in the word and returns the total point value of the word
+runtime for "getWordValue" is O(n)."point" returns the point value of each character.
+Each point value of each character a-z is stored in the array[26] with 0 corresponding to 'a' and 25 to 'z'.
+With the numeral codes of letters being sequential ('b' - 'a' = 1, 'c' - 'a' = 2) the array is accessed using this.
+With arrays being random access (O(1)). The point function runs in O(1)
+
+Rack:
+This class contains two static methods "getSubsets" and "allSubsets". "getSubSets" uses two data structures - a map and
+and array. The map holds each character as its key and the number of occurrences of the character as its value.
+getSubsets loops through the string and adds each letter to the map and increments the count of each letter as necessary
+The array is then created to match the size of the keySet of the map. The array holds the values(count) of each of the
+keySet. The runtime of getSubsets is O(n^2) + the time taken by the recursive call to allSubsets
+
+
+AnagramDictionary:
+This has two methods - the constructor and getAnagramsOf methods. It also has a private Map variable.
+This uses a hashMap with a string of keys and an arraylist to hold all multiset of letters that match with the key.
+The key is a string of letters which has been arranged alphabetically. Any word that matches this form when sorted
+alphabetically is added to the arraylist(value). The runtime of the constructor is O(n) where n is the number of words
+in the file.
+getAnagrams converts the string to a charArray and then sorts the string into the alphabetically order. Creates a
+new string from the sorted word and uses that to access the map data structure. The runtime for this function is O(n)
+(minus the time to sort the string) which comes from converting the string to charArray.
+
+WordFinder:
+The contains the main method and handles input/output with the user. It has 3 helper static method -
+createScoreWordMap, getTotalWordCount and print. The main method also calls the other classes such as rack, scoretable
+and anagramDictionary. It receives the optional filename from the user console which is used to create the
+anagramDictionary if available else the default is used. It then requests the user to input the current rack. It calls
+the rack allsubset method to get all the available multiset of the rack. Wordfinder then calls createWordMap which takes
+in a rack and a dictionary and returns a treeMap sorted in reverse order containing all words with length >= 2 and their
+score value. getTotalWordCount takes in the created map and gets the total number of words in the map. print prints out
+all the words and the score value in the required format.
+The runtime for createWordMap is O(n^2), getTotalWordCount is O(n), print is O(n^2)
+
+
+
+----------------------------------------------
+ANY OTHER NOTES FOR THE GRADER:
+
+
+
+
+
+
+
